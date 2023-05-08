@@ -1,4 +1,4 @@
 # lifebit-tech-challenge
 lifebit-tech-challenge
 
-![architecture](architecture.drawio)
+![architecture](architecture.drawio.svg)
