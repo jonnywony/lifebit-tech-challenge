@@ -1,0 +1,8 @@
+ec2
+asg 
+alb
+nsg
+vpc
+public ip
+cloudwatch logging
+https://aws.amazon.com/blogs/compute/introducing-instance-refresh-for-ec2-auto-scaling/
