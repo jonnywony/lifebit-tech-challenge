@@ -6,9 +6,8 @@ module "alb" {
 
   load_balancer_type = "application"
 
-  vpc_id             = "vpc-abcde012"
-  subnets            = ["subnet-abcde012", "subnet-bcde012a"]
-  security_groups    = ["sg-edcd9784", "sg-edcd9785"]
+  vpc_id             = module.vpc.vpc_id
+  subnets            = [module.vpc.public_subnets[0], module.vpc.public_subnets[1]]
 
   target_groups = [
     {
@@ -16,16 +15,6 @@ module "alb" {
       backend_protocol = "HTTP"
       backend_port     = 80
       target_type      = "instance"
-      targets = {
-        my_target = {
-          target_id = "i-0123456789abcdefg"
-          port = 80
-        }
-        my_other_target = {
-          target_id = "i-a1b2c3d4e5f6g7h8i"
-          port = 8080
-        }
-      }
     }
   ]
 
@@ -38,5 +27,5 @@ module "alb" {
     }
   ]
 
-  tags = locals.tags
+  tags = local.tags
 }

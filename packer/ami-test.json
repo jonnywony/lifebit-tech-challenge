@@ -1,0 +1,27 @@
+{
+    "variables": {
+      "aws_access_key": "",
+      "aws_secret_key": ""
+    },
+    "builders": [{
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "ap-south-1",
+      "source_ami": "ami-06a0b4e3b7eb7a300",
+      "skip_region_validation":"true",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",       
+      "ami_name": "express-node-js"
+    }],
+    "provisioners": [{
+      "type": "shell",
+      "inline": [
+        "sleep 30",
+        //installs cloudwatch agent
+        "sudo yum install amazon-cloudwatch-agent",
+        //installs nodejs repo
+        "git clone git@github.com:nodejs/examples.git"
+      ]
+    }]
+  }

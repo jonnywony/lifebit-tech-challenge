@@ -1,0 +1,9 @@
+{
+    "name": "load-test",
+    "scripts": {
+        "load-test": "artillery run .stress.yml"
+    },
+    "dependencies": {
+        "artillery": "^2.0.0"
+    }
+}
