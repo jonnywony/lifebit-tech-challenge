@@ -187,9 +187,10 @@ To make sure application is deployed when provision is happening, we should
 load-test:
 	cd load-test && npm i && npm run load-test
 
-tf-apply:
+build-app:
+	packer build packer/ami-test.json > //get ami-image somehow as output
 	terraform init
-	terraform apply --auto-approve
+	terraform apply --auto-approve --var ami_image=<ami-image>
 ```
 ###### Explanation
 We use makefile to achieve this. By running build-app and load test, we will apply all terraform resources in this repo, and the load test respectively.
